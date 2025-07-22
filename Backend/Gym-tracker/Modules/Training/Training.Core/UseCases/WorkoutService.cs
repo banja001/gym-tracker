@@ -18,10 +18,5 @@ namespace Training.Core.UseCases
             _mapper = mapper;
             _workoutRepository = crudRepository;
         }
-
-        Result<PagedResult<WorkoutDto>> IWorkoutService.GetPaged(int page, int pageSize)
-        {
-            return MapToDto(_workoutRepository.GetPaged(page, pageSize));
-        }
     }
 }
