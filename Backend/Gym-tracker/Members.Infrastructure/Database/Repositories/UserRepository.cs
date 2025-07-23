@@ -70,12 +70,6 @@ namespace Members.Infrastructure.Database.Repositories
         {
             return _dbContext.Users.FirstOrDefault(user => user.Username == username);
         }
-        public void SetRefreshToken(string username, string refreshToken)
-        {
-            var user = GetByUsername(username);
-            user.RefreshToken = refreshToken;
-            _dbContext.SaveChanges();
-        }
         public bool Exists(string username)
         {
             return _dbContext.Users.Any(user => user.Username == username);

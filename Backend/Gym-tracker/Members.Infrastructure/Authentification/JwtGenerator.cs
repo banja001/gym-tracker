@@ -16,7 +16,7 @@ namespace Members.Infrastructure.Authentification
         private readonly string _issuer = Environment.GetEnvironmentVariable("JWT_ISSUER") ?? "gym_tracker";
         private readonly string _audience = Environment.GetEnvironmentVariable("JWT_AUDIENCE") ?? "gym_tracker-front.com";
 
-        public Result<AuthenticationTokensDto> GenerateAccessAndRefreshToken(User user)
+        public Result<AuthenticationTokensDto> GenerateAccessToken(User user)
         {
             var authenticationResponse = new AuthenticationTokensDto();
 
@@ -30,10 +30,8 @@ namespace Members.Infrastructure.Authentification
             };
 
             var jwt = CreateToken(claims, 60);
-            var refresh = GenerateRefreshToken();
             authenticationResponse.Id = user.Id;
             authenticationResponse.AccessToken = jwt;
-            authenticationResponse.RefreshToken = refresh;
             return authenticationResponse;
         }
         private string CreateToken(IEnumerable<Claim> claims, double expirationTimeInMinutes)
@@ -49,15 +47,6 @@ namespace Members.Infrastructure.Authentification
                 signingCredentials: credentials);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
-        }
-        private string GenerateRefreshToken()
-        {
-            var randomNumber = new byte[32];
-            using (var rng = RandomNumberGenerator.Create())
-            {
-                rng.GetBytes(randomNumber);
-                return Convert.ToBase64String(randomNumber);
-            }
         }
         public long GetUserIdFromToken(string jwtToken)
         {
