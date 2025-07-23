@@ -56,9 +56,12 @@ namespace Training.Infrastructure.Migrations
                     b.Property<int>("Type")
                         .HasColumnType("integer");
 
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Workouts");
+                    b.ToTable("Workouts", "training");
                 });
 #pragma warning restore 612, 618
         }
