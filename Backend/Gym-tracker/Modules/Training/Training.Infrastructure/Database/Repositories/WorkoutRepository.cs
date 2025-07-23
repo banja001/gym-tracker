@@ -39,6 +39,13 @@ namespace Training.Infrastructure.Database.Repositories
             return workout ?? throw new KeyNotFoundException("Not found: " + id);
         }
 
+        public IEnumerable<Workout> GetByUserId(long userId)
+        {
+            var workouts = _dbSet.Where(t => t.UserId == userId).ToList();
+
+            return workouts;
+        }
+
         public PagedResult<Workout> GetPaged(int page, int pageSize)
         {
             var task = _dbSet.GetPaged(page, pageSize);
@@ -48,17 +55,16 @@ namespace Training.Infrastructure.Database.Repositories
 
         public Workout Update(Workout entity)
         {
+            var existing = _dbContext.Workouts.Find(entity.Id);
+            if (existing == null)
+                throw new KeyNotFoundException($"Workout with id {entity.Id} not found.");
 
-            try
-            {
-                _dbContext.Update(entity);
-                _dbContext.SaveChanges();
-            }
-            catch (DbUpdateException e)
-            {
-                throw new KeyNotFoundException(e.Message);
-            }
-            return entity;
+            _dbContext.Entry(existing).CurrentValues.SetValues(entity);
+
+            _dbContext.SaveChanges();
+
+            return existing;
         }
+
     }
 }

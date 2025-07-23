@@ -12,7 +12,7 @@ using Training.Infrastructure.Database;
 namespace Training.Infrastructure.Migrations
 {
     [DbContext(typeof(TrainingContext))]
-    [Migration("20250722163756_Init")]
+    [Migration("20250723130928_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -59,9 +59,12 @@ namespace Training.Infrastructure.Migrations
                     b.Property<int>("Type")
                         .HasColumnType("integer");
 
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Workouts");
+                    b.ToTable("Workouts", "training");
                 });
 #pragma warning restore 612, 618
         }
