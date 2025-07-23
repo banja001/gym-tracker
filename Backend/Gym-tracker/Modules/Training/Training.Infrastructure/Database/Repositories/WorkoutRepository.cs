@@ -53,6 +53,13 @@ namespace Training.Infrastructure.Database.Repositories
             return task.Result;
         }
 
+        public IEnumerable<Workout> GetWorkoutsInMonth(int year, int month, long userId)
+        {
+            return _dbContext.Workouts
+                .Where(w => w.Time.Year == year && w.Time.Month == month && w.UserId == userId)
+                .ToList();
+        }
+
         public Workout Update(Workout entity)
         {
             var existing = _dbContext.Workouts.Find(entity.Id);
