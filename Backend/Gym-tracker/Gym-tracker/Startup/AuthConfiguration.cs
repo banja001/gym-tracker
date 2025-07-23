@@ -15,9 +15,9 @@ namespace Gym_tracker.Startup
 
         private static void ConfigureAuthentication(IServiceCollection services)
         {
-            var key = Environment.GetEnvironmentVariable("JWT_KEY") ?? "explorer_secret_key";
-            var issuer = Environment.GetEnvironmentVariable("JWT_ISSUER") ?? "explorer";
-            var audience = Environment.GetEnvironmentVariable("JWT_AUDIENCE") ?? "explorer-front.com";
+            string key = Environment.GetEnvironmentVariable("JWT_KEY") ?? "gym_tracker_best_secret_key_12345";
+            string issuer = Environment.GetEnvironmentVariable("JWT_ISSUER") ?? "gym_tracker";
+            string audience = Environment.GetEnvironmentVariable("JWT_AUDIENCE") ?? "gym_tracker-front.com";
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
