@@ -12,6 +12,5 @@ namespace Members.API.Public
     {
         Result<AuthenticationTokensDto> Login(CredentialsDto credentials);
         Result<RegisteredUserDto> Register(AccountRegistrationDto account);
-        Result<AuthenticationTokensDto> Refresh(AuthenticationTokensDto tokens);
     }
 }
