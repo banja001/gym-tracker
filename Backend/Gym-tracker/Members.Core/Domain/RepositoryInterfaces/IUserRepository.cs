@@ -9,5 +9,9 @@ namespace Members.Core.Domain.RepositoryInterfaces
 {
     public interface IUserRepository : ICrudRepository<User>
     {
+        bool Exists(string username);
+        User? GetByUsername(string username);
+        void SetRefreshToken(string username, string refreshToken);
+
     }
 }

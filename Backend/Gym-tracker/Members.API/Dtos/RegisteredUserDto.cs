@@ -6,16 +6,15 @@ using System.Threading.Tasks;
 
 namespace Members.API.Dtos
 {
-    public class UserDto
+    public class RegisteredUserDto
     {
-        public int Id { get; set; }
-
-        public string FirstName { get; set; }
-
-        public string LastName { get; set; }
-
+        public long Id { get; set; }
         public string Username { get; set; }
 
-        public string Password { get; set; }
+        public RegisteredUserDto(long id, string username)
+        {
+            Id = id;
+            Username = username;
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BuildingBlocks.Core.UseCases;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Training.API.Dtos;
 using Training.API.Public;
@@ -6,6 +7,7 @@ using Training.API.Public;
 namespace Gym_tracker.Controllers
 {
     [Route("api/workout")]
+    [Authorize]
     public class WorkoutController : BaseApiController
     {
         private readonly IWorkoutService _workoutService;
