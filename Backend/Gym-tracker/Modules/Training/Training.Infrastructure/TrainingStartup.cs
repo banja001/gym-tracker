@@ -24,6 +24,7 @@ namespace Training.Infrastructure
         private static void SetupCore(IServiceCollection services)
         {
             services.AddScoped<IWorkoutService, WorkoutService>();
+            services.AddScoped<IWorkoutStatisticsService, WorkoutStatisticsService>();
         }
         private static void SetupInfrastructure(IServiceCollection services)
         {
