@@ -6,7 +6,7 @@ namespace Members.Core.UseCases
 {
     public interface ITokenGenerator
     {
-        Result<AuthenticationTokensDto> GenerateAccessAndRefreshToken(User user);
+        Result<AuthenticationTokensDto> GenerateAccessToken(User user);
         long GetUserIdFromToken(string jwtToken);
 
     }

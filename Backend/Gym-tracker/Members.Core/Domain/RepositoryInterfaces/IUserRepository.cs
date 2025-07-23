@@ -11,7 +11,6 @@ namespace Members.Core.Domain.RepositoryInterfaces
     {
         bool Exists(string username);
         User? GetByUsername(string username);
-        void SetRefreshToken(string username, string refreshToken);
 
     }
 }

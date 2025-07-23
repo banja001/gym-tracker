@@ -10,6 +10,5 @@ namespace Members.API.Dtos
     {
         public long Id { get; set; }
         public string AccessToken { get; set; }
-        public string RefreshToken { get; set; }
     }
 }

@@ -29,8 +29,7 @@ namespace Members.Core.UseCases
             var user = _userRepository.GetByUsername(credentials.Username);
             if (user == null || !PasswordEncoder.Matches(credentials.Password, user.Password)) return Result.Fail(FailureCode.NotFound);
             //if (user == null || !Equals(credentials.Password, user.Password)) return Result.Fail(FailureCode.NotFound);
-            var tokens = _tokenGenerator.GenerateAccessAndRefreshToken(user);
-            _userRepository.SetRefreshToken(user.Username, tokens.Value.RefreshToken);
+            var tokens = _tokenGenerator.GenerateAccessToken(user);
             return tokens;
         }
 
@@ -43,35 +42,15 @@ namespace Members.Core.UseCases
                 if (!string.IsNullOrWhiteSpace(account.Password) && !PasswordRegex.IsMatch(account.Password))
                     throw new ArgumentException("Invalid Password format. Password must be at least 6 characters long and include at least one number.");
                 var user = _userRepository.Create(new User(account.FirstName, account.LastName, account.Username, PasswordEncoder.Encode(account.Password)));
-                var refreshToken = _tokenGenerator.GenerateAccessAndRefreshToken(user);
-                user.RefreshToken = refreshToken.Value.RefreshToken;
+                var token = _tokenGenerator.GenerateAccessToken(user);
                 user = _userRepository.Update(user);
 
-                return new RegisteredUserDto(user.Id, user.Username);
+                return new RegisteredUserDto(user.Id, user.Username, token.Value.AccessToken);
             }
             catch (ArgumentException e)
             {
                 return Result.Fail(FailureCode.InvalidArgument).WithError(e.Message);
             }
-        }
-        public Result<AuthenticationTokensDto> Refresh(AuthenticationTokensDto tokens)
-        {
-            User user = _userRepository.Get(getUserIdFromToken(tokens.AccessToken));
-            if (user.RefreshToken != tokens.RefreshToken)
-            {
-                return null;
-            }
-            AuthenticationTokensDto newJwtTokens = _tokenGenerator.GenerateAccessAndRefreshToken(user).Value;
-            if (newJwtTokens == null)
-            {
-                return null;
-            }
-            _userRepository.SetRefreshToken(user.Username, newJwtTokens.RefreshToken);
-            return newJwtTokens;
-        }
-        private long getUserIdFromToken(string token)
-        {
-            return _tokenGenerator.GetUserIdFromToken(token);
         }
     }
 }
