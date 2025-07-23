@@ -3,6 +3,7 @@ using Members.API.Public;
 using Members.Core.Domain.RepositoryInterfaces;
 using Members.Core.Mappers;
 using Members.Core.UseCases;
+using Members.Infrastructure.Authentification;
 using Members.Infrastructure.Database;
 using Members.Infrastructure.Database.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -28,6 +29,8 @@ namespace Members.Infrastructure
         private static void SetupCore(IServiceCollection services)
         {
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IAuthenticationService, AuthenticationService>();
+            services.AddScoped<ITokenGenerator, JwtGenerator>();
         }
         private static void SetupInfrastructure(IServiceCollection services)
         {

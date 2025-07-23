@@ -10,22 +10,16 @@ namespace Members.Core.Domain
     public class User: Entity
     {
         public string FirstName { get; set; }
-
         public string LastName { get; set; }
-
         public string Username { get; set; }
-
-        public string Email { get; set; }
-
         public string Password { get; set; }
+        public string? RefreshToken { get; set; }
         public User() { }
-
-        public User(string firstName, string lastName, string username, string email, string password)
+        public User(string firstName, string lastName, string username, string password)
         {
             FirstName = firstName;
             LastName = lastName;
             Username = username;
-            Email = email;
             Password = password;
         }
     }
