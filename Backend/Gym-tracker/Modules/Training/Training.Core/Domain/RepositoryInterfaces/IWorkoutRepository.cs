@@ -9,5 +9,6 @@ namespace Training.Core.Domain.RepositoryInterfaces
 {
     public interface IWorkoutRepository : ICrudRepository<Workout>
     {
+        IEnumerable<Workout> GetByUserId(long userId);
     }
 }
