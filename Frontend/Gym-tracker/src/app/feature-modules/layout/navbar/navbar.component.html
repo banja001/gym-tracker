@@ -2,12 +2,12 @@
   <div>
     <p>GYM TRACKER</p>
     <div id="buttons">
-      <button *ngIf="user && user.username === ''" color="warn" mat-raised-button [routerLink]="['login']">Login</button>
       <button color="primary" mat-raised-button [routerLink]="['']">Home</button>
       <button *ngIf="user && user.username !== ''" color="accent" mat-raised-button [routerLink]="['/workout-create']">Create Workout</button>
       <button *ngIf="user && user.username !== ''" color="accent" mat-raised-button [routerLink]="['/workouts']">List of Workouts</button>
       <button *ngIf="user && user.username !== ''" color="accent" mat-raised-button [routerLink]="['/workout-stats']">Statistics</button>
       <button *ngIf="user && user.username !== ''" color="warn" mat-raised-button (click)="onLogout()">Logout</button>
+      <button *ngIf="user && user.username === ''" color="warn" mat-raised-button [routerLink]="['login']">Login</button>
     </div>
   </div>
 </mat-toolbar>

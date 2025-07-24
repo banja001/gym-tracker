@@ -1,52 +1,53 @@
 <div class="workout-stats-container">
+    <h2 class="centered-heading">Workout statistics</h2>
     <form [formGroup]="statsForm" (ngSubmit)="loadStats()">
-    <mat-form-field appearance="fill">
-        <mat-label>Year</mat-label>
-        <input matInput type="number" formControlName="year" required />
-    </mat-form-field>
+        <mat-form-field appearance="fill" class="height">
+            <mat-label>Year</mat-label>
+            <input matInput type="number" formControlName="year" required />
+        </mat-form-field>
 
-    <mat-form-field appearance="fill">
-        <mat-label>Month</mat-label>
-        <mat-select formControlName="month" required>
-        <mat-option *ngFor="let m of [1,2,3,4,5,6,7,8,9,10,11,12]" [value]="m">
-            {{ m }}
-        </mat-option>
-        </mat-select>
-    </mat-form-field>
+        <mat-form-field appearance="fill" class="height">
+            <mat-label>Month</mat-label>
+            <mat-select formControlName="month" required>
+            <mat-option *ngFor="let m of months" [value]="m.value">
+                {{ m.label }}
+            </mat-option>
+            </mat-select>
+        </mat-form-field>
 
-    <button mat-raised-button color="primary" type="submit">Load Stats</button>
+        <button mat-raised-button color="primary" type="submit" class="height">Load Stats</button>
     </form>
 
     <div *ngIf="weeklyStats.length > 0" class="stats-table">
-    <table mat-table [dataSource]="weeklyStats" class="mat-elevation-z8">
+        <table mat-table [dataSource]="weeklyStats" class="mat-elevation-z8">
 
-        <ng-container matColumnDef="weekNumber">
-        <th mat-header-cell *matHeaderCellDef>Week</th>
-        <td mat-cell *matCellDef="let s">{{ s.weekNumber }}</td>
-        </ng-container>
+            <ng-container matColumnDef="weekNumber">
+            <th mat-header-cell *matHeaderCellDef>Week</th>
+            <td mat-cell *matCellDef="let s">{{ s.weekNumber }}</td>
+            </ng-container>
 
-        <ng-container matColumnDef="totalDuration">
-        <th mat-header-cell *matHeaderCellDef>Total Duration</th>
-        <td mat-cell *matCellDef="let s">{{ s.totalDuration }} min</td>
-        </ng-container>
+            <ng-container matColumnDef="totalDuration">
+            <th mat-header-cell *matHeaderCellDef>Total Duration</th>
+            <td mat-cell *matCellDef="let s">{{ s.totalDuration }} min</td>
+            </ng-container>
 
-        <ng-container matColumnDef="workoutCount">
-        <th mat-header-cell *matHeaderCellDef>Workout Count</th>
-        <td mat-cell *matCellDef="let s">{{ s.workoutCount }}</td>
-        </ng-container>
+            <ng-container matColumnDef="workoutCount">
+            <th mat-header-cell *matHeaderCellDef>Workout Count</th>
+            <td mat-cell *matCellDef="let s">{{ s.workoutCount }}</td>
+            </ng-container>
 
-        <ng-container matColumnDef="averageIntensity">
-        <th mat-header-cell *matHeaderCellDef>Avg Intensity</th>
-        <td mat-cell *matCellDef="let s">{{ s.averageIntensity | number:'1.1-1' }}</td>
-        </ng-container>
+            <ng-container matColumnDef="averageIntensity">
+            <th mat-header-cell *matHeaderCellDef>Avg Intensity</th>
+            <td mat-cell *matCellDef="let s">{{ s.averageIntensity | number:'1.1-1' }}</td>
+            </ng-container>
 
-        <ng-container matColumnDef="averageFatigue">
-        <th mat-header-cell *matHeaderCellDef>Avg Fatigue</th>
-        <td mat-cell *matCellDef="let s">{{ s.averageFatigue | number:'1.1-1' }}</td>
-        </ng-container>
+            <ng-container matColumnDef="averageFatigue">
+            <th mat-header-cell *matHeaderCellDef>Avg Fatigue</th>
+            <td mat-cell *matCellDef="let s">{{ s.averageFatigue | number:'1.1-1' }}</td>
+            </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="['weekNumber','totalDuration','workoutCount','averageIntensity','averageFatigue']"></tr>
-        <tr mat-row *matRowDef="let row; columns: ['weekNumber','totalDuration','workoutCount','averageIntensity','averageFatigue']"></tr>
-    </table>
+            <tr mat-header-row *matHeaderRowDef="['weekNumber','totalDuration','workoutCount','averageIntensity','averageFatigue']"></tr>
+            <tr mat-row *matRowDef="let row; columns: ['weekNumber','totalDuration','workoutCount','averageIntensity','averageFatigue']"></tr>
+        </table>
     </div>
 </div>
