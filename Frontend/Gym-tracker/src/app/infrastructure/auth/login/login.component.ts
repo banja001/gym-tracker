@@ -38,13 +38,13 @@ export class LoginComponent {
         },
         error: (err) => {
         if (err.status === 404) {
-           this.snackBar.open('Wrong credentials', 'Close', {
+          this.snackBar.open('Wrong credentials', 'Close', {
           duration: 3000, 
           panelClass: ['error-snackbar'],
           verticalPosition: 'bottom' 
           });
         } else {
-           this.snackBar.open('Login error', 'Close', {
+          this.snackBar.open('Login error', 'Close', {
           duration: 3000,
           panelClass: ['error-snackbar'],
           verticalPosition: 'bottom' 
