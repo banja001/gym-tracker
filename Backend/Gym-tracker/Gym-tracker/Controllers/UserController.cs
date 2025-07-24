@@ -2,8 +2,6 @@
 using Members.API.Dtos;
 using Members.API.Public;
 using Microsoft.AspNetCore.Mvc;
-using Training.API.Dtos;
-using Training.API.Public;
 
 namespace Gym_tracker.Controllers
 {

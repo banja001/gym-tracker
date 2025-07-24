@@ -24,7 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Members.Infrastructure\Members.Infrastructure.csproj" />
+    <ProjectReference Include="..\Modules\Members\Members.Infrastructure\Members.Infrastructure.csproj" />
+    <ProjectReference Include="..\Modules\Members\Members.API\Members.API.csproj" />
+    <ProjectReference Include="..\Modules\Members\Members.Infrastructure\Members.Infrastructure.csproj" />
     <ProjectReference Include="..\Modules\Training\Training.Infrastructure\Training.Infrastructure.csproj" />
   </ItemGroup>
 
