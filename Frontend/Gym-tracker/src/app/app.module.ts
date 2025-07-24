@@ -9,6 +9,7 @@ import { MaterialModule } from './infrastructure/material/material.module';
 import { AuthModule } from './infrastructure/auth/auth.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtInterceptor } from './infrastructure/auth/jwt/jwt.interceptor';
+import { TrainingModule } from './feature-modules/training/training.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { JwtInterceptor } from './infrastructure/auth/jwt/jwt.interceptor';
     BrowserAnimationsModule,
     MaterialModule,
     AuthModule,
-    HttpClientModule
+    HttpClientModule,
+    TrainingModule
   ],
   providers: [
     {
