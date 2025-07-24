@@ -5,9 +5,7 @@
 ## 📦 Technologies
 
 - ASP.NET Core (.NET 8)
-- Entity Framework Core with PostgreSQL
-- PostgreSQL managed via pgAdmin
-- AutoMapper, FluentValidation
+- PostgreSQL
 - Modular architecture (e.g., `Members`, `Training`)
 - Angular (frontend framework)
 - Angular Material for UI components and theming
@@ -21,7 +19,23 @@
 git clone https://github.com/banja001/gym-tracker.git
 cd gym-tracker
 ```
-### 2. Apply database migrations
+
+### 2. Prepare the database
+
+Before applying migrations, create the PostgreSQL database and schemas:
+
+- Create a database named `gym-tracker` in pgAdmin:
+
+  ```sql
+  CREATE DATABASE "gym-tracker";
+  ```
+- Create a schemas named `training` and `members` in pgAdmin:
+  ```sql
+  CREATE SCHEMA members;
+  CREATE SCHEMA training;
+  ```
+
+### 3. Apply database migrations
 
 #### TrainingContext
 
