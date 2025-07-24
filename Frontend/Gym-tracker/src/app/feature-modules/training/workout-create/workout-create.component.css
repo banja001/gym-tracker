@@ -1,0 +1,15 @@
+.form-container {
+    max-width: 400px;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.centered-heading {
+    text-align: center;
+    color: #1976d2;
+    font-size: xx-large;
+    font-weight: bold;
+    margin-bottom: 50px;
+    margin-top:50px;
+}
