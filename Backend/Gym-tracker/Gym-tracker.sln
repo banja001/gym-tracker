@@ -30,13 +30,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Training.Core", "Modules\Tr
 		{913B6508-8845-54F9-97A9-BC1B60D7A44F} = {913B6508-8845-54F9-97A9-BC1B60D7A44F}
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Members", "Members", "{8B2ED0DA-3F71-475C-B0E2-4888DE5836FC}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Members", "Modules\Members\Members", "{8B2ED0DA-3F71-475C-B0E2-4888DE5836FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Members.API", "Members.API\Members.API.csproj", "{72F5800F-E8C6-4B1B-8C61-D31DC81DFB41}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Members.API", "Modules\Members\Members.API\Members.API.csproj", "{72F5800F-E8C6-4B1B-8C61-D31DC81DFB41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Members.Core", "Members.Core\Members.Core.csproj", "{820F9CD4-12CD-4F98-8E3C-078EFFF52FAB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Members.Core", "Modules\Members\Members.Core\Members.Core.csproj", "{820F9CD4-12CD-4F98-8E3C-078EFFF52FAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Members.Infrastructure", "Members.Infrastructure\Members.Infrastructure.csproj", "{02734682-A7DC-45A2-B425-C30F03603A43}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Members.Infrastructure", "Modules\Members\Members.Infrastructure\Members.Infrastructure.csproj", "{02734682-A7DC-45A2-B425-C30F03603A43}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

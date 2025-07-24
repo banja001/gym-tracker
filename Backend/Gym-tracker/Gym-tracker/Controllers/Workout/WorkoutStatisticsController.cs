@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Training.API.Dtos;
 using Training.API.Public;
 
-namespace Gym_tracker.Controllers
+namespace Gym_tracker.Controllers.Workout
 {
     [Route("api/workout-statistics")]
     [Authorize]

@@ -2,7 +2,7 @@
 using Members.API.Public;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Gym_tracker.Controllers
+namespace Gym_tracker.Controllers.User
 {
     [Route("api/auth")]
 
