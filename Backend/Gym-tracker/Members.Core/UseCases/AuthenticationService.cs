@@ -13,7 +13,7 @@ namespace Members.Core.UseCases
 {
     public class AuthenticationService : BaseService<UserDto,User>, IAuthenticationService
     {
-        private static readonly Regex PasswordRegex = new Regex(@"^(?=.*\d).{6,}$", RegexOptions.Compiled, TimeSpan.FromMilliseconds(2000));
+        private static readonly Regex PasswordRegex = new Regex(@"^.{5,}$", RegexOptions.Compiled, TimeSpan.FromMilliseconds(2000));
 
         private readonly ITokenGenerator _tokenGenerator;
         private readonly IUserRepository _userRepository;
